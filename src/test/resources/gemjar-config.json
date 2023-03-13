@@ -4,10 +4,6 @@
   "feature": "src/test/resources/features/",
   "glueCode": "stepdefinition",
   "reportName": "GradleTestReport",
-  "gemjarSubID": "test_id",
-  "gemjarUserName": "rahultagra",
-  "gemjarToken": "68b9011b-8f70-41f2-9272-6c9c590e85941675852079436",
-  "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "tagName": "@reg",
   "prod": {
     "browserName": "chrome",
