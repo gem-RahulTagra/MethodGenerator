@@ -1,0 +1,86 @@
+defaultTasks 'clean','test','aggregate'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+group 'org.orangehrmdemo'                       //set according to your group name
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    project.ext {
+        serenityVersion = '2.3.12'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('net.serenity-bdd:serenity-gradle-plugin:' + serenityVersion)
+    }
+}
+
+sourceCompatibility = 11                        //add according to your project SDK
+targetCompatibility = 11                        //add according to your project SDK
+
+ext {
+    slf4jVersion = '2.0.1'
+    serenityCoreVersion = '3.3.4'
+    junitVersion = '4.13.2'
+    assertJVersion = '3.23.1'
+    logbackVersion = '1.2.3'
+    restAssuredVersion = '5.2.0'
+    jsonVersion = '20220320'
+}
+
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-rest-assured:${serenityCoreVersion}",
+            "io.rest-assured:rest-assured:${restAssuredVersion}",
+            "org.json:json:${jsonVersion}",
+            "junit:junit:${junitVersion}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "org.slf4j:slf4j-simple:${slf4jVersion}",
+            "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.4"
+    testImplementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.1'
+    testImplementation group:'net.sf.jtidy', name:'jtidy', version:'r938'
+    testImplementation group:'nz.ac.waikato.cms.weka',name:'weka-dev', version:'3.9.1'
+    testImplementation group: 'com.crawljax.plugins', name: 'crawloverview-plugin', version: '3.6'
+    testImplementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    testImplementation group: 'com.google.code.javaparser', name: 'javaparser', version: '1.0.9'
+    testImplementation group: 'com.fasterxml.jackson.core', name:'jackson-databind', version:'2.8.8.1'
+    testImplementation group: 'net.sourceforge.htmlcleaner', name: 'htmlcleaner', version: '2.9'
+    implementation group: 'com.gemecosystem.gemjar', name: 'gemjar-core', version: '1.1.8'
+
+
+}
+
+test {
+    filter {
+        //include specific method in any of the tests
+//        includeTestsMatching "*Assignments.GoogleAssignment"
+
+        //Cucumber tests
+        includeTestsMatching "*.CucumberRunner"                   //Set to your Cucumber Runner directory/Package
+
+        //RestAssured Tests
+//        includeTestsMatching "*.RestRunner.*"               //Set to your Rest Runner TDD directory/Package
+
+        //RestAssured Tests
+//        includeTestsMatching "*.RestAssuredRunner"               //Set to your Rest Runner BDD directory/Package
+    }
+//    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
