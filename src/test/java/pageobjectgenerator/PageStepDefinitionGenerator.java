@@ -105,8 +105,8 @@ public class PageStepDefinitionGenerator {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenClickable(c, field);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, false);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, false);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, true);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,false);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,true);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "input")) {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionClear(c, field);
@@ -115,8 +115,8 @@ public class PageStepDefinitionGenerator {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, false);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenEnabled(c, field);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, false);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, true);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,false);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,true);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "click")) {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionDoubleCLick(c, field);
@@ -124,7 +124,7 @@ public class PageStepDefinitionGenerator {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenClickable(c, field);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethod(c, field, locatorType);// Radio and CheckBox and Normal Click Operation
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, false);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,false);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, false);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "image")) {
@@ -134,8 +134,8 @@ public class PageStepDefinitionGenerator {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, false);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenSelected(c, field);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, false);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, true);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,false);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,true);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "a")) {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenClickable(c, field);
@@ -147,14 +147,11 @@ public class PageStepDefinitionGenerator {
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionTextGetter(c, field);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethod(c, field, locatorType);// Radio and CheckBox and Normal Click Operation
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, false);
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field, true);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,false);
+                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionAttributeGetter(c, field,true);
             }
 
         }
-        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateTo(c);
-        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateForward(c);
-        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateBack(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodGiven(c, "homePage");
         UtilsStepDefinitionCodeGenerator.savePageObjectsOnFileSystem(Settings.STEP_DEFINITION_PO_DIR,
                 aClass.getSimpleName() + "StepDefinition", c, true);

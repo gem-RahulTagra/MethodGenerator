@@ -15,10 +15,4 @@ public class Google extends PageObject {
     @LocatorType(value="input")
     public static By password=By.id("password");
 
-
-    @LocatorType(value="image")
-    public static By pass=By.id("password");
-
-    @LocatorType(value="click")
-    public static By pass1=By.id("password");
 }

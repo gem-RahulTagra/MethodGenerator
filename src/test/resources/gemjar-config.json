@@ -6,8 +6,8 @@
   "reportName": "GradleTestReport",
   "tagName": "@reg",
   "prod": {
-    "browserName": "firefox",
-    "launchUrl": "C:\\Users\\rahul.tagra\\Desktop\\MethodGenerator\\src\\test\\resources\\data\\index.html",
+    "browserName": "chrome",
+    "launchUrl": "C:\\Users\\rahul.tagra\\Desktop\\GradleProject\\src\\test\\resources\\data\\index.html",
     "browserTimeout": 100
   }
 }

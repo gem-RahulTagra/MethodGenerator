@@ -70,11 +70,5 @@ public class Settings {
 	public static final String USER_HOME_PAGE_ANNOTATION ="^User is on homepage";
 	public static final String USER_SELECT_ANNOTATION="^user selects \\\"(.*)\\\" from ";
 
-	public static final String USER_NAVIGATE_BACK ="^User Navigates Back to Previous Page";
-
-	public static final String USER_NAVIGATE_FORWARD ="^User Navigates Forward to Next Page";
-
-	public static final String USER_NAVIGATE_TO ="User navigates to {string}";
-
 	public static String BEFORE_FUNCTION="setDriverInitialisation";
 }

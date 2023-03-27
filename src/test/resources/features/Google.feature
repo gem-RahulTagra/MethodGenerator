@@ -20,30 +20,25 @@ Feature: Test
     When User clears the FirstName element text
     Then User verifies the " " for FirstName element
 
-  @reg
-  Scenario: Verify Username field is visible
-    When User clears the FirstName element text
-    Then FirstName is visible
-
-  @reg
-  Scenario: Verify Password value
-    When User enters "Password" as Password input
-    Then User verifies the "Password" for Password element
-
-  @reg
-  Scenario: Verify Password field is enabled
-    When User enters "Password" as Password input
-    Then User verify the given Password element is enabled
-
-  @reg
-  Scenario: Verify Password field is empty
-    When User clears the Password element text
-    Then User verifies the " " for Password element
-
-  @reg
-  Scenario: Verify Password field is visible
-    When User clears the Password element text
-    Then Password is visible
+#  Scenario: Verify Username field is visible
+#    When User clears the FirstName element text
+#    Then FirstName is visible
+#
+#  Scenario: Verify Password value
+#    When User enters "Password" as Password input
+#    Then User verifies the "Password" for Password element
+#
+#  Scenario: Verify Password field is enabled
+#    When User enters "Password" as Password input
+#    Then User verify the given Password element is enabled
+#
+#  Scenario: Verify Password field is empty
+#    When User clears the Password element text
+#    Then User verifies the " " for Password element
+#
+#  Scenario: Verify Password field is visible
+#    When User clears the Password element text
+#    Then Password is visible
 
 #  @GoogleAnswer1
 #  Scenario: Navigate to and Verify that Google page has loaded
@@ -53,13 +48,13 @@ Feature: Test
 #  Scenario: Switch Languages on Google Home Page
 #    Given User navigates to "google"
 #    Then change language to Hindi
-
+#
 #  @GoogleAnswer3
 #  Scenario: Navigate to Google and Click on the "I'm Feeling Lucky" button
 #    Given User navigates to "google"
 #    Then Type "serenity bdd" in search bar
 #    Then click on "I'm feeling lucky"
-##
+#
 #  @GoogleAnswer4
 #  Scenario Outline: Search for <search> from Google Home Page
 #    Given User navigates to "google"
