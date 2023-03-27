@@ -122,7 +122,7 @@ public class PageMethodGenerator {
                 UtilsMethodCodeGenerator.setMethodClickable(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsTypeGetter(c, field);
                 UtilsMethodCodeGenerator.setMethodScrollClick(c, field);
-
+                UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "a")) {
                 UtilsMethodCodeGenerator.setLinkMethodsClick(c, field);// Radio and CheckBox and Normal Click Operation
@@ -133,6 +133,7 @@ public class PageMethodGenerator {
                 UtilsMethodCodeGenerator.setLinkMethodsDropDown(c, field);
                 UtilsMethodCodeGenerator.setMethodClickable(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsTypeGetter(c, field);
+                UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
 
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "image") || StringUtils.equalsIgnoreCase(locatorType, "file")) {
@@ -142,12 +143,16 @@ public class PageMethodGenerator {
                 UtilsMethodCodeGenerator.setLinkMethodForUpload(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodForIsSelected(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
+                UtilsMethodCodeGenerator.setLinkMethodsValueVerification(c, field);
             }
             if (!StringUtils.equalsIgnoreCase(field.getName(), "driver")) {
                 UtilsMethodCodeGenerator.setLinkMethodForVisibility(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodForText(c, field);
             }
         }
+        UtilsMethodCodeGenerator.setLinkMethodsNavigateTo(c);
+        UtilsMethodCodeGenerator.setLinkMethodsNavigateForward(c);
+        UtilsMethodCodeGenerator.setLinkMethodsNavigateBack(c);
         UtilsMethodCodeGenerator.setLinkMethodsOpenHomePage(c);
         UtilsMethodCodeGenerator.savePageObjectsOnFileSystem(Settings.IMPLEMENTATION_PO_DIR,
                 aClass.getSimpleName() + "Implementation", c, false);

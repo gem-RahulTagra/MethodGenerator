@@ -106,7 +106,7 @@ public class CodeGeneratorRunner {
                 }
 
             }
-
+// All input functions are covered for Gemjar reporting
             if (StringUtils.contains(locatorType, "input")) {
                 UtilsMethodCodeGenerator.setLinkMethodsTypeSetter(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsTypeGetter(c, field);
@@ -127,7 +127,7 @@ public class CodeGeneratorRunner {
                 UtilsMethodCodeGenerator.setMethodClickable(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsTypeGetter(c, field);
                 UtilsMethodCodeGenerator.setMethodScrollClick(c, field);
-
+                UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "a")) {
                 UtilsMethodCodeGenerator.setLinkMethodsClick(c, field);// Radio and CheckBox and Normal Click Operation
@@ -138,6 +138,7 @@ public class CodeGeneratorRunner {
                 UtilsMethodCodeGenerator.setLinkMethodsDropDown(c, field);
                 UtilsMethodCodeGenerator.setMethodClickable(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsTypeGetter(c, field);
+                UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
 
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "image") || StringUtils.equalsIgnoreCase(locatorType, "file")) {
@@ -147,12 +148,16 @@ public class CodeGeneratorRunner {
                 UtilsMethodCodeGenerator.setLinkMethodForUpload(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodForIsSelected(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
+                UtilsMethodCodeGenerator.setLinkMethodsValueVerification(c, field);
             }
             if (!StringUtils.equalsIgnoreCase(field.getName(), "driver")) {
                 UtilsMethodCodeGenerator.setLinkMethodForVisibility(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodForText(c, field);
             }
         }
+        UtilsMethodCodeGenerator.setLinkMethodsNavigateTo(c);
+        UtilsMethodCodeGenerator.setLinkMethodsNavigateForward(c);
+        UtilsMethodCodeGenerator.setLinkMethodsNavigateBack(c);
         UtilsMethodCodeGenerator.setLinkMethodsOpenHomePage(c);
         UtilsMethodCodeGenerator.savePageObjectsOnFileSystem(Settings.IMPLEMENTATION_PO_DIR,
                 aClass.getSimpleName() + "Implementation", c, false);
@@ -274,6 +279,9 @@ public class CodeGeneratorRunner {
             }
 
         }
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateTo(c);
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateForward(c);
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateBack(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodGiven(c, "homePage");
         UtilsStepDefinitionCodeGenerator.savePageObjectsOnFileSystem(Settings.STEP_DEFINITION_PO_DIR,
                 aClass.getSimpleName() + "StepDefinition", c, true);
