@@ -45,6 +45,7 @@ public class UtilsStepDefinitionCodeGenerator {
         cu.setPackage(new PackageDeclaration(ASTHelper.createNameExpr(name)));
         cu.setImports(UtilsStepDefinitionCodeGenerator.getAllImports(type));
         return cu;
+
     }
 
     /**

@@ -18,6 +18,7 @@ public class PageStepDefinitionGenerator {
         ClassLoader classLoader = PageStepDefinitionGenerator.class.getClassLoader();
         Class aClass;
         for (int i = 0; i < args.length; i++) {
+
             Settings.LOCATOR_FILE_NAME = args[i];
 
             try {

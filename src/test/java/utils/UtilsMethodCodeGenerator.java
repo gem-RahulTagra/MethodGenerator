@@ -44,6 +44,7 @@ public class UtilsMethodCodeGenerator {
         cu.setPackage(new PackageDeclaration(ASTHelper.createNameExpr(name)));
         cu.setImports(UtilsMethodCodeGenerator.getAllImports(type));
         return cu;
+
     }
 
     /**

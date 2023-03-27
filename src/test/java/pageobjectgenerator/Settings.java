@@ -77,4 +77,5 @@ public class Settings {
 	public static final String USER_NAVIGATE_TO ="User navigates to {string}";
 
 	public static String BEFORE_FUNCTION="setDriverInitialisation";
+
 }
