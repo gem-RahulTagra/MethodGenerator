@@ -115,7 +115,7 @@ public class PageMethodGenerator {
                 UtilsMethodCodeGenerator.setLinkMethodsClick(c, field);// Radio and CheckBox and Normal Click Operation
                 UtilsMethodCodeGenerator.setMethodClickable(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
-
+                UtilsMethodCodeGenerator.setLinkMethodsValueVerification(c, field);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "click")) {
                 UtilsMethodCodeGenerator.setLinkMethodsDoubleClick(c, field);
@@ -135,7 +135,7 @@ public class PageMethodGenerator {
                 UtilsMethodCodeGenerator.setMethodClickable(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsTypeGetter(c, field);
                 UtilsMethodCodeGenerator.setLinkMethodsAttributeGetter(c, field);
-
+                UtilsMethodCodeGenerator.setLinkMethodsValueVerification(c, field);
             }
             if (StringUtils.equalsIgnoreCase(locatorType, "image") || StringUtils.equalsIgnoreCase(locatorType, "file")) {
                 UtilsMethodCodeGenerator.setLinkMethodsClick(c, field);// Radio and CheckBox and Normal Click Operation
