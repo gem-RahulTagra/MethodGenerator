@@ -153,9 +153,14 @@ public class UtilsMethodCodeGenerator {
             if (readProperties("Framework").contains("GEMJAR")) {
                 imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.reporting.GemTestReporter"), false, false));
                 imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.reporting.STATUS"), false, false));
-                imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.ui.utils.DriverAction.takeSnapShot"), true, false));
+//                imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.ui.utils.DriverAction.takeSnapShot"), true, false));
                 imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.ui.utils.DriverManager"), false, false));
                 imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.ui.utils.DriverAction"), false, false));
+                imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.utils.GemJarUtils"), false, false));
+                imports.add(new ImportDeclaration(new NameExpr("org.openqa.selenium.chrome.ChromeOptions"), false, false));
+                imports.add(new ImportDeclaration(new NameExpr("io.github.bonigarcia.wdm.WebDriverManager"), false, false));
+                imports.add(new ImportDeclaration(new NameExpr("org.openqa.selenium.firefox.FirefoxDriver"), false, false));
+                imports.add(new ImportDeclaration(new NameExpr("com.gemini.generic.utils.GemJarGlobalVar"), false, false));
             } else {
                 imports.add(new ImportDeclaration(new NameExpr("net.serenitybdd.core.pages.WebElementFacade"), false, false));
                 imports.add(new ImportDeclaration(new NameExpr("net.serenitybdd.core.pages.PageObject"), false, false));
@@ -739,7 +744,7 @@ public class UtilsMethodCodeGenerator {
     }
 
     public static String readProperties(String property) throws IOException { // Function to read Data from Properties File
-        FileReader read = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\config.properties");
+        FileReader read = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\config.properties");
         Properties credential = new Properties();
         credential.load(read);
         return credential.getProperty(property);
@@ -753,9 +758,24 @@ public class UtilsMethodCodeGenerator {
         BlockStmt block = new BlockStmt();
         method.setBody(block);
         if (readProperties("Framework").contains("GEMJAR")) {
-            ASTHelper.addStmt(block, new NameExpr("try{\n\t\t\tDriverManager.setUpBrowser()"));
-            ASTHelper.addStmt(block, new NameExpr("} \n\t\tcatch(" + "Exception e" + "){" + "\n\t\t\tSettings" + "." + "LOGGER" + "." + "info(" + "\"User gets an exception: \"" + "+" + "e" + ")"));
-            ASTHelper.addStmt(block, new NameExpr("}"));
+            ASTHelper.addStmt(block, new NameExpr("if (GemJarUtils.getGemJarConfigData(\"chromeOptions\") != null && !GemJarUtils.getGemJarConfigData(\"chromeOptions\").isEmpty())" +
+                    " {\n\t\t\tChromeOptions options = new ChromeOptions()"));
+            ASTHelper.addStmt(block, new NameExpr("\toptions.addArguments(\"--remote-allow-origins=*\")"));
+            ASTHelper.addStmt(block, new NameExpr("\toptions.addArguments(\"--\" + GemJarUtils.getGemJarConfigData(\"chromeOptions\"))"));
+            ASTHelper.addStmt(block, new NameExpr("\tDriverManager.initializeChrome(options)"));
+            ASTHelper.addStmt(block, new NameExpr("}\n\t\telse{\n\t\t\tif(GemJarUtils.getGemJarConfigData(\"browserName\").equals(\"firefox\")){\n\t\t\t\tWebDriverManager.firefoxdriver().clearDriverCache().setup()"));
+            ASTHelper.addStmt(block, new NameExpr("\t\tDriverManager.setWebDriver(new FirefoxDriver())"));
+            ASTHelper.addStmt(block, new NameExpr("\t}\n\t\t\telse{\n\t\t\tChromeOptions options = new ChromeOptions()"));
+            ASTHelper.addStmt(block, new NameExpr("\toptions.addArguments(\"--remote-allow-origins=*\")"));
+            ASTHelper.addStmt(block, new NameExpr("\tDriverManager.initializeChrome(options)"));
+            ASTHelper.addStmt(block, new NameExpr("\t\t}\n\t}\n\t\tmaximizeBrowser()"));
+            ASTHelper.addStmt(block, new NameExpr("launchUrl(GemJarUtils.getGemJarConfigData(\"launchUrl\"))"));
+            ASTHelper.addStmt(block, new NameExpr("setImplicitTimeOut(Long.parseLong(GemJarGlobalVar.implicitTime))"));
+            ASTHelper.addStmt(block, new NameExpr("setPageLoadTimeOut(Long.parseLong(GemJarGlobalVar.pageTimeout))"));
+            ASTHelper.addStmt(block, new NameExpr("setScriptTimeOut(Long.parseLong(GemJarGlobalVar.scriptTimeout))"));
+//            ASTHelper.addStmt(block, new NameExpr("try{\n\t\t\tDriverManager.setUpBrowser()"));
+//            ASTHelper.addStmt(block, new NameExpr("} \n\t\tcatch(" + "Exception e" + "){" + "\n\t\t\tSettings" + "." + "LOGGER" + "." + "info(" + "\"User gets an exception: \"" + "+" + "e" + ")"));
+//            ASTHelper.addStmt(block, new NameExpr("}"));
         } else {
             ASTHelper.addStmt(block, new NameExpr("getDriver(" + ")" + "." + "get" + "(" + "Settings.URL" + ")"));
             ASTHelper.addStmt(block, new NameExpr("Settings" + "." + "LOGGER" + "." + "info(" + "\"User launches the application\"" + ")"));
