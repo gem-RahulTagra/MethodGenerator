@@ -739,7 +739,7 @@ public class UtilsMethodCodeGenerator {
     }
 
     public static String readProperties(String property) throws IOException { // Function to read Data from Properties File
-        FileReader read = new FileReader("C:\\Users\\rahul.tagra\\Desktop\\MethodGenerator\\src\\test\\resources\\config.properties");
+        FileReader read = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\config.properties");
         Properties credential = new Properties();
         credential.load(read);
         return credential.getProperty(property);
