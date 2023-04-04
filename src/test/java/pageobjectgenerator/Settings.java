@@ -76,6 +76,10 @@ public class Settings {
 
 	public static final String USER_NAVIGATE_TO ="User navigates to {string}";
 
+	public static final String USER_VERIFY_URL ="User verifies the current URL with {string}";
+
+	public static final String USER_GET_URL ="User gets current url of the page";
+
 	public static String BEFORE_FUNCTION="setDriverInitialisation";
 
 }
