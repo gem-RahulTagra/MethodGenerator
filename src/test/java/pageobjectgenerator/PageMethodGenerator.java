@@ -151,6 +151,8 @@ public class PageMethodGenerator {
                 UtilsMethodCodeGenerator.setLinkMethodForText(c, field);
             }
         }
+        UtilsMethodCodeGenerator.setLinkMethodsGetUrl(c);
+        UtilsMethodCodeGenerator.setLinkMethodsVerifyUrl(c);
         UtilsMethodCodeGenerator.setLinkMethodsNavigateTo(c);
         UtilsMethodCodeGenerator.setLinkMethodsNavigateForward(c);
         UtilsMethodCodeGenerator.setLinkMethodsNavigateBack(c);
