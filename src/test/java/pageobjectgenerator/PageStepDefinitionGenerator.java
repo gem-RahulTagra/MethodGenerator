@@ -102,7 +102,6 @@ public class PageStepDefinitionGenerator {
             }
 
             if (StringUtils.equalsIgnoreCase(locatorType, "button")) {
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethod(c, field, locatorType);// Radio and CheckBox and Normal Click Operation
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenClickable(c, field);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, false);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
@@ -159,6 +158,8 @@ public class PageStepDefinitionGenerator {
             }
 
         }
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionGetUrl(c);
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionVerifyUrl(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateTo(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateForward(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateBack(c);
