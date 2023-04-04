@@ -156,6 +156,8 @@ public class CodeGeneratorRunner {
                 UtilsMethodCodeGenerator.setLinkMethodForText(c, field);
             }
         }
+        UtilsMethodCodeGenerator.setLinkMethodsGetUrl(c);
+        UtilsMethodCodeGenerator.setLinkMethodsVerifyUrl(c);
         UtilsMethodCodeGenerator.setLinkMethodsNavigateTo(c);
         UtilsMethodCodeGenerator.setLinkMethodsNavigateForward(c);
         UtilsMethodCodeGenerator.setLinkMethodsNavigateBack(c);
@@ -229,7 +231,6 @@ public class CodeGeneratorRunner {
             }
 
             if (StringUtils.equalsIgnoreCase(locatorType, "button")) {
-                UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethod(c, field, locatorType);// Radio and CheckBox and Normal Click Operation
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenClickable(c, field);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, false);
                 UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionMethodThenVisibility(c, field, true);
@@ -286,6 +287,8 @@ public class CodeGeneratorRunner {
             }
 
         }
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionGetUrl(c);
+        UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionVerifyUrl(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateTo(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateForward(c);
         UtilsStepDefinitionCodeGenerator.setLinkStepDefinitionNavigateBack(c);
