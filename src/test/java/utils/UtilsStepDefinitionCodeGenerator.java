@@ -149,7 +149,7 @@ public class UtilsStepDefinitionCodeGenerator {
             imports.add(new ImportDeclaration(new NameExpr("org.openqa.selenium.support.PageFactory"), false, false));
         } else {
             //adding imports for stepDefinition class
-
+            imports.add(new ImportDeclaration(new NameExpr("io.cucumber.java.en.And"), false, false));
             imports.add(new ImportDeclaration(new NameExpr("io.cucumber.java.Before"), false, false));
             imports.add(new ImportDeclaration(new NameExpr("io.cucumber.java.en.Given"), false, false));
             imports.add(new ImportDeclaration(new NameExpr("io.cucumber.java.en.Then"), false, false));
@@ -1017,6 +1017,85 @@ public class UtilsStepDefinitionCodeGenerator {
         annotationValue = "\"" + Settings.USER_NAVIGATE_TO + "\"";
         textToEnter = "navigateTo";
         blockToEnter = textToEnter + "(url" + ")";
+        MethodDeclaration method = new MethodDeclaration(ModifierSet.PUBLIC, ASTHelper.VOID_TYPE, functionName);
+        method.setParameters(parameters);
+        // add a body to the method
+        BlockStmt block = new BlockStmt();
+        method.setBody(block);
+        NormalAnnotationExpr na = new NormalAnnotationExpr();
+        na.setName(new NameExpr(annotationType));
+        List<MemberValuePair> list_mvp = new LinkedList<MemberValuePair>();
+        MemberValuePair mvp = new MemberValuePair();
+
+        List<AnnotationExpr> list_espr = new LinkedList<AnnotationExpr>();
+        mvp = new MemberValuePair("xpath", new NameExpr(annotationValue));
+        list_mvp.add(mvp);
+        na.setPairs(list_mvp);
+        list_espr.add(0, na);
+
+        method.setAnnotations(list_espr);
+
+        String firstLetter = Settings.LOCATOR_FILE_NAME.substring(0, 1).toLowerCase();
+        String nameOfFile = firstLetter + Settings.LOCATOR_FILE_NAME.substring(1);
+        ASTHelper.addStmt(block, new NameExpr(nameOfFile + "." + blockToEnter));
+        ASTHelper.addMember(c.getTypes().get(0), method);
+        Settings.LOGGER.info(method.toString());
+        Settings.LOGGER.info(c.getTypes().get(0).toString());
+    }
+
+    public static void setLinkStepDefinitionVerifyUrl(CompilationUnit c) {
+        String functionName = "";
+        String annotationValue = "";
+        String textToEnter = "";
+        String blockToEnter = "";
+        String annotationType = "";
+
+        List<Parameter> parameters = new LinkedList<>();
+        parameters.add(ASTHelper.createParameter(ASTHelper.createReferenceType("String", 0), "url"));
+        functionName = "verifyUrl";
+        annotationType = "And";
+        annotationValue = "\"" + Settings.USER_VERIFY_URL + "\"";
+        textToEnter = "verifyURL";
+        blockToEnter = textToEnter + "(url" + ")";
+        MethodDeclaration method = new MethodDeclaration(ModifierSet.PUBLIC, ASTHelper.VOID_TYPE, functionName);
+        method.setParameters(parameters);
+        // add a body to the method
+        BlockStmt block = new BlockStmt();
+        method.setBody(block);
+        NormalAnnotationExpr na = new NormalAnnotationExpr();
+        na.setName(new NameExpr(annotationType));
+        List<MemberValuePair> list_mvp = new LinkedList<MemberValuePair>();
+        MemberValuePair mvp = new MemberValuePair();
+
+        List<AnnotationExpr> list_espr = new LinkedList<AnnotationExpr>();
+        mvp = new MemberValuePair("xpath", new NameExpr(annotationValue));
+        list_mvp.add(mvp);
+        na.setPairs(list_mvp);
+        list_espr.add(0, na);
+
+        method.setAnnotations(list_espr);
+
+        String firstLetter = Settings.LOCATOR_FILE_NAME.substring(0, 1).toLowerCase();
+        String nameOfFile = firstLetter + Settings.LOCATOR_FILE_NAME.substring(1);
+        ASTHelper.addStmt(block, new NameExpr(nameOfFile + "." + blockToEnter));
+        ASTHelper.addMember(c.getTypes().get(0), method);
+        Settings.LOGGER.info(method.toString());
+        Settings.LOGGER.info(c.getTypes().get(0).toString());
+    }
+
+    public static void setLinkStepDefinitionGetUrl(CompilationUnit c) {
+        String functionName = "";
+        String annotationValue = "";
+        String textToEnter = "";
+        String blockToEnter = "";
+        String annotationType = "";
+
+        List<Parameter> parameters = new LinkedList<>();
+        functionName = "getUrl";
+        annotationType = "Then";
+        annotationValue = "\"" + Settings.USER_GET_URL + "$" + "\"";
+        textToEnter = "getURL";
+        blockToEnter = textToEnter + "(" + ")";
         MethodDeclaration method = new MethodDeclaration(ModifierSet.PUBLIC, ASTHelper.VOID_TYPE, functionName);
         method.setParameters(parameters);
         // add a body to the method
